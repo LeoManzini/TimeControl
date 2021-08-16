@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Workday {
+public class UserCategory {
 	
 	private Long id;
 	private String description;
