@@ -3,6 +3,8 @@ package br.com.leomanzini.time.control.models;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +16,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class User {
 
+	@Id
 	private Long id;
 	
 	@ManyToOne // Inside of users, X users can be associated to one category

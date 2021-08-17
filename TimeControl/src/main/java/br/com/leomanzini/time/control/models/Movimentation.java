@@ -23,7 +23,6 @@ public class Movimentation {
 	@NoArgsConstructor
 	@AllArgsConstructor
 	public class IdMovimentation implements Serializable {
-
 		private static final long serialVersionUID = 3465261450375508232L;
 		
 		private Long movimentationId;
@@ -36,5 +35,5 @@ public class Movimentation {
 	private LocalDateTime endDate;
 	private BigDecimal period;
 	private Occurrence occurrence;
-	private Calendar calendar;
+	private MyCalendar myCalendar;
 }
