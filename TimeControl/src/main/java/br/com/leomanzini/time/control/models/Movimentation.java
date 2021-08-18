@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Movimentation {
 	
 	@Data
@@ -34,6 +38,10 @@ public class Movimentation {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private BigDecimal period;
+	
+	@OneToOne(targetEntity=Occurrence.class, fetch=FetchType.EAGER)
 	private Occurrence occurrence;
+	
+	@OneToOne(targetEntity=MyCalendar.class, fetch=FetchType.EAGER)
 	private MyCalendar myCalendar;
 }
