@@ -35,7 +35,7 @@ public class WorkdayController {
 	
 	@GetMapping("/{workdayid}")
 	public ResponseEntity<Workday> getWorkdayById(@PathVariable("workdayid") Long workdayId) throws Exception {
-		return ResponseEntity.ok(workdayService.getWorkdayById(workdayId).orElseThrow(() -> new Exception("Workday not found by this ID: " + workdayId)));
+		return ResponseEntity.ok(workdayService.getWorkdayById(workdayId).orElseThrow(() -> new NoSuchMethodException("Workday not found by this ID: " + workdayId)));
 	}
 	
 	@PutMapping
@@ -43,8 +43,8 @@ public class WorkdayController {
 		return workdayService.updateWorkday(workday);
 	}
 	
-	@DeleteMapping
-	public void deleteWorkday(@RequestBody Workday workday) throws Exception {
-		workdayService.deleteWorkday(workday);
+	@DeleteMapping("/{workdayid}")
+	public void deleteWorkday(@PathVariable("workdayid") Long workdayId) throws Exception {
+		workdayService.deleteWorkday(workdayId);
 	}
 }
