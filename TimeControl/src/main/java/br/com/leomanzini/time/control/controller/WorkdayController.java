@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,23 +46,15 @@ public class WorkdayController {
 	}
 	
 	@DeleteMapping("/{workdayid}")
-	public String deleteWorkday(@PathVariable("workdayid") Long workdayId) {
-		
-		JSONObject json = new JSONObject();
+	public HttpStatus deleteWorkday(@PathVariable("workdayid") Long workdayId) {
 		
 		try {
 			workdayService.deleteWorkday(workdayId);
 			
-			json.append("description", "workday deleted successfully");
-			json.append("returnCode", 0);
-			
-		    return json.toString();
+		    return HttpStatus.OK;
 		} catch (Exception e) {
 			
-			json.append("description", "workday failed to delete");
-			json.append("returnCode", -1);
-			
-			return json.toString();
+			return HttpStatus.NOT_FOUND;
 		}
 	}
 }
