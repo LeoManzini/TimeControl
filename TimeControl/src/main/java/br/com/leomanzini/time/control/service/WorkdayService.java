@@ -1,6 +1,7 @@
 package br.com.leomanzini.time.control.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,14 @@ public class WorkdayService {
 		return workdayRepository.save(workday);
 	}
 	
+	// Returns a list with all the workdays found at database
 	public List<Workday> getAllWorkdays() {
 		return workdayRepository.findAll();
+	}
+	
+	// Returns an specific workday, the Optional<Workday> is case we cant found the id at database
+	public Optional<Workday> getWorkdayById(Long workdayId) {
+		return workdayRepository.findById(workdayId);
 	}
 	
 	public Workday updateWorkday(Workday workday) throws Exception {
