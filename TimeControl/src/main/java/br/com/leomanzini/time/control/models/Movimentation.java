@@ -8,7 +8,9 @@ import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,14 +36,15 @@ public class Movimentation {
 	}
 	
 	@EmbeddedId
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private IdMovimentation id;
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private BigDecimal period;
 	
-	@OneToOne(targetEntity=Occurrence.class, fetch=FetchType.EAGER)
+	@ManyToOne(targetEntity=Occurrence.class, fetch=FetchType.EAGER)
 	private Occurrence occurrence;
 	
-	@OneToOne(targetEntity=MyCalendar.class, fetch=FetchType.EAGER)
+	@ManyToOne(targetEntity=MyCalendar.class, fetch=FetchType.EAGER)
 	private MyCalendar myCalendar;
 }

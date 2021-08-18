@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +36,7 @@ public class AnnualLeave {
 	}
 	
 	@EmbeddedId
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private IdAnnualLeave id;
 	private LocalDateTime workedDate;
 	private BigDecimal hoursQuantity;
