@@ -2,6 +2,7 @@ package br.com.leomanzini.time.control.controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,7 +45,23 @@ public class WorkdayController {
 	}
 	
 	@DeleteMapping("/{workdayid}")
-	public void deleteWorkday(@PathVariable("workdayid") Long workdayId) throws Exception {
-		workdayService.deleteWorkday(workdayId);
+	public String deleteWorkday(@PathVariable("workdayid") Long workdayId) {
+		
+		JSONObject json = new JSONObject();
+		
+		try {
+			workdayService.deleteWorkday(workdayId);
+			
+			json.append("description", "workday deleted successfully");
+			json.append("returnCode", 0);
+			
+		    return json.toString();
+		} catch (Exception e) {
+			
+			json.append("description", "workday failed to delete");
+			json.append("returnCode", -1);
+			
+			return json.toString();
+		}
 	}
 }
