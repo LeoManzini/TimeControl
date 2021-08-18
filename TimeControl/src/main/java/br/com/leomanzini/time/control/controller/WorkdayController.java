@@ -24,7 +24,7 @@ public class WorkdayController {
 	@Autowired
 	private WorkdayService workdayService;
 	
-	@PostMapping
+	@PostMapping(produces="application/json")
 	public Workday createWorkday(@RequestBody Workday workday) {
 		return workdayService.saveWorkday(workday);
 	}
