@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,28 +18,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Movimentation {
+public class AnnualLeave {
 	
 	@Data
 	@Embeddable
 	@NoArgsConstructor
 	@AllArgsConstructor
-	public class IdMovimentation implements Serializable {
-		private static final long serialVersionUID = 3465261450375508232L;
+	public class IdAnnualLeave implements Serializable {
+
+		private static final long serialVersionUID = -8166512671194627096L;
 		
+		private Long annualLeaveId;
 		private Long movimentationId;
 		private Long userId;
 	}
 	
 	@EmbeddedId
-	private IdMovimentation id;
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
-	private BigDecimal period;
-	
-	@OneToOne(targetEntity=Occurrence.class, fetch=FetchType.EAGER)
-	private Occurrence occurrence;
-	
-	@OneToOne(targetEntity=MyCalendar.class, fetch=FetchType.EAGER)
-	private MyCalendar myCalendar;
+	private IdAnnualLeave id;
+	private LocalDateTime workedDate;
+	private BigDecimal hoursQuantity;
+	private BigDecimal hoursBalance;
 }
