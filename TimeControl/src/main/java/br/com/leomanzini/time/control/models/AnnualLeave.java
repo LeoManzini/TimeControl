@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import org.hibernate.envers.Audited;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Audited
 public class AnnualLeave {
 	
 	@Data
@@ -34,6 +39,7 @@ public class AnnualLeave {
 	}
 	
 	@EmbeddedId
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private IdAnnualLeave id;
 	private LocalDateTime workedDate;
 	private BigDecimal hoursQuantity;
