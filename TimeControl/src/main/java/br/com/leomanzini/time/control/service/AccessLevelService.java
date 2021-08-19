@@ -32,7 +32,7 @@ public class AccessLevelService {
 		if(accessLevelRepository.existsById(accessLevel.getId())) {
 			return accessLevelRepository.save(accessLevel);
 		} else {
-			throw new NoSuchMethodException("AccessLevel not found by this ID: " + accessLevel.getId());
+			throw new NoSuchMethodException("Access level not found by this ID: " + accessLevel.getId());
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class AccessLevelService {
 		if(accessLevelRepository.existsById(accessLevelId)) {
 			accessLevelRepository.deleteById(accessLevelId);
 		} else {
-			throw new NoSuchMethodException("AccessLevel not found by this ID: " + accessLevelId);
+			throw new NoSuchMethodException("Access level not found by this ID: " + accessLevelId);
 		}
 	}
 }
